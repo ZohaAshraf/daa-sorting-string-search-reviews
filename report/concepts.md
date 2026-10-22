@@ -34,3 +34,6 @@ Why is summing ASCII values a bad hash?
 A plain sum ignores the order of the characters, so any anagram gets the same hash. "listen" and "silent" use the same letters, so both sum to 633 and look identical to the algorithm. Different words with the same letter total also collide. That causes a flood of spurious hits, and every one of them needs a full character-by-character check, so the search can degrade toward O(n·m). A polynomial hash multiplies each character by a different power of the base, so position matters and "listen" and "silent" get different values. Spurious hits are then rare, and they happen only when the modulus is small.
 
 Observation for your report: with q = 101 there are only 101 possible hash values, so unrelated windows collide often. With q = 1,000,000,007 collisions are very unlikely, so hash hits are almost exactly the real matches.
+The search is for the exact phrase gluten free, so reviews that write gluten-free with a hyphen are not counted. That follows the assignment wording. Mention it.
+The percentages are computed on your cleaned dataset (after dropping rows with zero helpfulness votes and ratio > 1), so the review counts per product are smaller than in the raw Kaggle file. State this in the report too.
+Pipeline summary in one line: KMP flags, radix sort groups by ProductId, one linear scan computes percentages.
